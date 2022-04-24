@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TodoItem } from "./TodoItem";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { getTodosAsyunc } from "../redux/todoSlice";
+
 export const TodoList = () => {
+    const dispatch= useDispatch() 
   const todos = useSelector((state) => state.todos);
 
+
+useEffect(()=>{
+    dispatch(getTodosAsyunc())
+},[dispatch])
+ 
   return (
     <div>
-      {todos.map((element, i) => {
+      {todos.map((todo,i) => {
         return (
           <TodoItem
             key={i}
-            id={element.id}
-            title={element.title}
-            completed={element.completed}
+            id={todo.id} 
+            title={todo.title}
+            completed={todo.completed}
           />
         );
       })}
