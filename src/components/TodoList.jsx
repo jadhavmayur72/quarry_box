@@ -5,7 +5,9 @@ import { getTodosAsyunc } from "../redux/todoSlice";
 
 export const TodoList = () => {
     const dispatch= useDispatch() 
-  const todos = useSelector((state) => state.todos);
+  const todos_list = useSelector((state) => state.todos);
+  // console.log('Page list')
+  // console.log(todos)
 
 
 useEffect(()=>{
@@ -14,13 +16,13 @@ useEffect(()=>{
  
   return (
     <div>
-      {todos.map((todo,i) => {
+      {todos_list.map((elem,i) => {
         return (
           <TodoItem
             key={i}
-            id={todo.id} 
-            title={todo.title}
-            completed={todo.completed}
+            id={elem.id} 
+            title={elem.title}
+            completed={elem.completed}
           />
         );
       })}

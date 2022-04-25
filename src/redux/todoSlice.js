@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 
 // get todos asynch thunk-------------------------
 
@@ -8,8 +9,8 @@ export const getTodosAsyunc = createAsyncThunk(
     try {
       const request = await fetch("http://localhost:8001/totalTodos");
       if (request.ok) {
-        const todos = await request.json();
-        return { todos };
+        const response = await request.json();
+        return { response };
       }
     } catch (error) {
       console.log("found error in getAsyn thunk : ", error);
@@ -28,10 +29,12 @@ export const addTodoAsyunc = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: payload.title }),
+        body: JSON.stringify({ title: payload.title,completed:payload.completed }),
       });
       if (req.ok) {
         const res = await req.json();
+        // console.log('addTodoAsyunc')
+        console.log(res)
         return { res };
       }
     } catch (error) {
@@ -42,31 +45,27 @@ export const addTodoAsyunc = createAsyncThunk(
 
 // toggle todos asynch thunk-------------------------
 
-export const toggleCompleteAsync = createAsyncThunk(
-  "todos/completedTodoAsync ",
-  async (payload) => {
-  try{
-    const request= await fetch(`http://localhost:8001/totalTodos/`,{
-        method:"PATCH",
-        headers:{
-            "Content-Type":"application/type",
-        },
-        body:JSON.stringify({completed:payload.completed})
-    }
+export const toggleCompleteTodoAsync= createAsyncThunk('todo/completeTodoAsync',async({payload})=>{
+  console.log(payload.id)
+  const response= await fetch(`http://localhost:8001/totalTodos/${payload.id}`,{
     
-    );
-    if(request.ok){
-        const response= await request.json()
-        return {id:response.id,completed:response.completed}
-        // return {id:response.id ,completed:response.completed}
-    }
 
+    method:'PATCH',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({payload})
+
+  })
+  if(response.ok){
+    const req= await response.json();
+    console.log(payload.id)
+    return {req}
   }
-  catch(error){
-      console.log("toggle async error:" )
-  }
-  }
-);
+})
+
+
+
 
 
 
@@ -76,23 +75,22 @@ export const toggleCompleteAsync = createAsyncThunk(
 export const deltethunkAsync = createAsyncThunk(
     "todos/deltethunkAsync",
     async (payload) => {
+      console.log("delete",payload)
     try{
       const request= await fetch(`http://localhost:8001/totalTodos/${payload.id}`,{
           method:"DELETE",
-          headers:{
-            "Content-Type":"application/type",
-        },
+       
          
-          body:JSON.stringify()
+
       },
      
 
       
       );
       if(request.ok){
-          const response= await request.json()
+          
   
-          return response
+          return {id:payload.id}
       }
   
     }
@@ -102,14 +100,14 @@ export const deltethunkAsync = createAsyncThunk(
     }
   );
 
-const todoSlice = createSlice({
+export const todoSlice = createSlice({
   name: "todos",
   initialState: [],
 
   reducers: {
     addTodo: (state, action) => {
       const newTodo = {
-        id: Date.now(),
+        id: nanoid(),
         title: action.payload.title,
         completed: false,
       };
@@ -132,26 +130,36 @@ const todoSlice = createSlice({
     //   to get todos in api..................................
     [getTodosAsyunc.fulfilled]: (state, action) => {
       console.log("fetching data successfully...");
-      return action.payload.todos;
+      return action.payload.response;
     },
 
     //   to add todos in api..................................
     [addTodoAsyunc.fulfilled]: (state, action) => {
-      state.push(action.payload.todos);
+      // console.log('add velues')
+      // console.log(state)
+      // console.log(state.length)
+      //state.push(action.payload.todos);
+      state=[...state, action.payload.res];
+      return state;
     },
 
       //   to toggle todos in api..................................
 
-    [toggleCompleteAsync.fulfilled]:(state,action)=>{
 
-        const index = state.findIndex((todos) => todos.id === action.payload.id);
-        state[index].completed = action.payload.completed;
+      [toggleCompleteTodoAsync.fulfilled]:(state,action)=>{
+        console.log(action)
+        const index= state.findIndex((todos)=> todos.id===action.payload.todo.id);
+        state[index].completed= action.payload.todo.id
       },
+
+
 
 
     [deltethunkAsync.fulfilled]:(state,action)=>{
 
         return state.filter((todos) => todos.id !== action.payload.id);
+     
+        
     }
 
 

@@ -1,7 +1,7 @@
 import React,{ useState } from "react"
 import { useDispatch } from "react-redux"
 // import { addTodo } from "../redux/todoSlice"
-import { addTodoAsyunc ,addTodo} from "../redux/todoSlice"
+import { addTodoAsyunc } from "../redux/todoSlice"
 
 
 
@@ -16,6 +16,7 @@ export const AddTodoForm=()=>{
         e.preventDefault()
         dispatch(addTodoAsyunc({
             title:value,
+            completed:Boolean
         }))
         console.log("User has entered the "+value)
     }
