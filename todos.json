@@ -6,9 +6,24 @@
       "id": 2
     },
     {
-      "title": "asda",
+      "title": "hello India",
       "completed": false,
       "id": 3
+    },
+    {
+      "title": "hello THY",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "adding toogle function in the todo",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "adding the patch function to change the todo title",
+      "completed": false,
+      "id": 6
     }
   ]
 }

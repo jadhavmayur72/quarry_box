@@ -29,7 +29,7 @@ export const addTodoAsyunc = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: payload.title,completed:payload.completed }),
+        body: JSON.stringify({ id:payload.id, title: payload.title,completed:false }),
       });
       if (req.ok) {
         const res = await req.json();
@@ -54,7 +54,7 @@ export const toggleCompleteTodoAsync= createAsyncThunk('todo/completeTodoAsync',
     headers:{
       'Content-Type':'application/json'
     },
-    body:JSON.stringify({payload})
+    body:JSON.stringify({completed:payload.completed})
 
   })
   if(response.ok){
@@ -109,7 +109,7 @@ export const todoSlice = createSlice({
       const newTodo = {
         id: nanoid(),
         title: action.payload.title,
-        completed: false,
+        completed: Boolean,
       };
       state.push(newTodo);
     },
@@ -147,9 +147,13 @@ export const todoSlice = createSlice({
 
 
       [toggleCompleteTodoAsync.fulfilled]:(state,action)=>{
-        console.log(action)
-        const index= state.findIndex((todos)=> todos.id===action.payload.todo.id);
-        state[index].completed= action.payload.todo.id
+        
+        const index= state.findIndex((todos)=> todos.id===action.payload.totalTodos.id);
+       return state[index].completed= action.payload.totalTodos.id
+
+
+
+    
       },
 
 

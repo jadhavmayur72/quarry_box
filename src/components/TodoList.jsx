@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { TodoItem } from "./TodoItem";
 import { useSelector,useDispatch } from "react-redux";
 import { getTodosAsyunc } from "../redux/todoSlice";
+import "./style/forms.css"
 
 export const TodoList = () => {
     const dispatch= useDispatch() 
@@ -15,8 +16,16 @@ useEffect(()=>{
 },[dispatch])
  
   return (
-    <div>
-      {todos_list.map((elem,i) => {
+    <div id="listing">
+      <table>
+      
+          
+          
+
+
+          <tbody>
+         
+            {todos_list.map((elem,i) => {
         return (
           <TodoItem
             key={i}
@@ -26,6 +35,11 @@ useEffect(()=>{
           />
         );
       })}
+           
+          </tbody>
+
+      </table>
+  
     </div>
   );
 };

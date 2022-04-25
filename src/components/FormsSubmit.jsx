@@ -2,7 +2,7 @@ import React,{ useState } from "react"
 import { useDispatch } from "react-redux"
 // import { addTodo } from "../redux/todoSlice"
 import { addTodoAsyunc } from "../redux/todoSlice"
-
+import "./style/forms.css"
 
 
 
@@ -16,9 +16,10 @@ export const AddTodoForm=()=>{
         e.preventDefault()
         dispatch(addTodoAsyunc({
             title:value,
-            completed:Boolean
+            completed:{type:Boolean,default:false}
         }))
         console.log("User has entered the "+value)
+        setValue("")
     }
 
 
@@ -28,8 +29,8 @@ export const AddTodoForm=()=>{
         <div>
             <form onSubmit={onSubmit}>
 
-                <input type="text" placeholder="Add todos...." value={value} onChange={(event)=>setValue(event.target.value)} />
-                <button type="submit">Add</button>
+                <input className="input_box" type="text" placeholder="Add todos...." value={value} onChange={(event)=>setValue(event.target.value)} />
+                <button className="btn_submit" type="submit">Add</button>
 
             </form>
         </div>

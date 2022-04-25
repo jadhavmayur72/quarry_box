@@ -1,0 +1,69 @@
+.table_th{
+    /* border: 1px solid red; */
+    width: 150px;
+    height: 25px;
+    padding: 5px;
+    border-radius: 5px; 
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: 20px;
+    
+}
+
+#listing{
+    width: 600px;
+    height: 200px;
+    overflow-y: scroll;
+    border:  1px solid black;
+    margin: auto;
+    border-radius: 5px;
+    padding: 5px;
+
+    background:linear-gradient(45deg,rgb(117, 66, 66),rgb(158, 192, 63),rgb(207, 143, 25));
+    
+}
+#listing::-webkit-scrollbar{
+    width: 10px;
+    background-color: white;
+  
+}
+#listing::-webkit-scrollbar-thumb{
+    /* width: 10px; */
+    height: 5px;
+    border-radius: 8px;
+    background-color: red;
+  
+}
+
+.table_tr:hover{
+    background:linear-gradient(45deg,rgb(228, 200, 200),rgb(226, 235, 202),rgb(236, 198, 127));
+
+}
+
+.input_box{
+    width: 400px;
+    height: 45px;
+}
+.btn_submit{
+    height: 45px;
+    margin-left: 25px;
+    width: 75px;
+    color: rgb(235, 8, 8);
+    font-size: 18px;
+    font-weight: bolder;
+    font-family: monospace;
+    border-radius: 5px;
+    border:  3px solid black;
+
+}
+.btn_delete{
+    height: 35px;
+    border-radius: 5px;
+    margin-left: 25px;
+    width: 75px;
+    color: rgb(235, 2, 2);
+    font-size: 12px;
+    font-weight: bolder;
+
+}
