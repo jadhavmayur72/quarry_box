@@ -6,11 +6,6 @@
       "id": 2
     },
     {
-      "title": "hello India",
-      "completed": false,
-      "id": 3
-    },
-    {
       "title": "hello THY",
       "completed": false,
       "id": 4
@@ -24,6 +19,11 @@
       "title": "adding the patch function to change the todo title",
       "completed": false,
       "id": 6
+    },
+    {
+      "title": "hello electron",
+      "completed": false,
+      "id": 7
     }
   ]
 }
