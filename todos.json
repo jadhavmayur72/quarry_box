@@ -1,29 +1,19 @@
 {
   "totalTodos": [
     {
-      "title": "world",
+      "title": "add toogle feature",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "add patch function",
       "completed": false,
       "id": 2
     },
     {
-      "title": "hello THY",
+      "title": "write code in typescript",
       "completed": false,
-      "id": 4
-    },
-    {
-      "title": "adding toogle function in the todo",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "title": "adding the patch function to change the todo title",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "title": "hello electron",
-      "completed": false,
-      "id": 7
+      "id": 3
     }
   ]
 }
