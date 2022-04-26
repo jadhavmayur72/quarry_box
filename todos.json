@@ -14,6 +14,16 @@
       "title": "write code in typescript",
       "completed": false,
       "id": 3
+    },
+    {
+      "title": "add the code to githb",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "add code and debug it",
+      "completed": false,
+      "id": 5
     }
   ]
 }
