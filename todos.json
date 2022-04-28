@@ -24,6 +24,11 @@
       "title": "add code and debug it",
       "completed": false,
       "id": 5
+    },
+    {
+      "title": "adding the value",
+      "completed": false,
+      "id": 6
     }
   ]
 }
