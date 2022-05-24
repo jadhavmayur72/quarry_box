@@ -1,11 +1,6 @@
 {
   "totalTodos": [
     {
-      "title": "add toogle feature",
-      "completed": false,
-      "id": 1
-    },
-    {
       "title": "add patch function",
       "completed": false,
       "id": 2
@@ -29,6 +24,11 @@
       "title": "adding the value",
       "completed": false,
       "id": 6
+    },
+    {
+      "title": "adasdasdasd",
+      "completed": false,
+      "id": 7
     }
   ]
 }
